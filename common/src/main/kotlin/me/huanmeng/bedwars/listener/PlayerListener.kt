@@ -1,6 +1,6 @@
-package com.huanmeng.bedwars.listener
+package me.huanmeng.bedwars.listener
 
-import com.huanmeng.bedwars.game.Game
+import me.huanmeng.bedwars.game.Game
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent

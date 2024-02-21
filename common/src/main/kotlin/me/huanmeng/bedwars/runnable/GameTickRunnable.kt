@@ -1,6 +1,6 @@
-package com.huanmeng.bedwars.runnable
+package me.huanmeng.bedwars.runnable
 
-import com.huanmeng.bedwars.game.Game
+import me.huanmeng.bedwars.game.Game
 
 /**
  * 2023/9/1<br>

@@ -1,6 +1,6 @@
-package com.huanmeng.bedwars.game
+package me.huanmeng.bedwars.game
 
-import com.huanmeng.bedwars.BedwarsPlugin
+import me.huanmeng.bedwars.BedwarsPlugin
 import net.kyori.adventure.text.Component
 import net.megavex.scoreboardlibrary.api.sidebar.Sidebar
 import org.bukkit.World

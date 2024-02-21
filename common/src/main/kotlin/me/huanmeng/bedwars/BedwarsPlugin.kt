@@ -1,4 +1,4 @@
-package com.huanmeng.bedwars
+package me.huanmeng.bedwars
 
 import net.megavex.scoreboardlibrary.api.ScoreboardLibrary
 import org.bukkit.plugin.java.JavaPlugin

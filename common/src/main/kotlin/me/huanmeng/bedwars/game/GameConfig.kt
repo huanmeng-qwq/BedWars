@@ -1,6 +1,6 @@
-package com.huanmeng.bedwars.game
+package me.huanmeng.bedwars.game
 
-import com.huanmeng.bedwars.util.Pos
+import me.huanmeng.bedwars.util.Pos
 
 /**
  * 2023/9/1<br>

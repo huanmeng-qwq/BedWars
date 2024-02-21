@@ -8,17 +8,29 @@ group = "com.huanmeng-qwq"
 version = "1.0"
 
 dependencies {
-    testImplementation(kotlin("test"))
-    api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
-    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    val scoreboardLibraryVersion = "2.0.0-RC12"
-    compileOnly("com.github.megavexnetwork.scoreboard-library:scoreboard-library-implementation:$scoreboardLibraryVersion")
-    val adventureVersion = "4.14.0"
-    compileOnly("net.kyori:adventure-api:$adventureVersion")
+    api(libs.adventure.api)
+    api(libs.adventure.nbt)
+    api(libs.adventure.gson)
+    api(libs.adventure.bukkit)
+
+    api(libs.event.api)
+    api(libs.event.method)
+
+    api(libs.packetevents.spigot)
+
+    api(libs.scoreboard.api)
+    api(libs.scoreboard.packetevent)
+
+    implementation(libs.server8)
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks.processResources {
+    val props = mapOf("version" to project.version)
+    inputs.properties(props)
+    filteringCharset = "UTF_8"
+    filesMatching("plugin.yml") {
+        expand(props)
+    }
 }
 
 tasks.withType<KotlinCompile> {

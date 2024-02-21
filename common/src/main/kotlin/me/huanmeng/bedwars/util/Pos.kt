@@ -1,4 +1,4 @@
-package com.huanmeng.bedwars.util
+package me.huanmeng.bedwars.util
 
 import org.bukkit.Location
 import org.bukkit.World
