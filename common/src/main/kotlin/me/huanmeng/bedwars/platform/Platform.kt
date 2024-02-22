@@ -8,6 +8,8 @@ import org.slf4j.Logger
  * @author huanmeng_qwq
  */
 interface Platform {
+    fun createSideBar(): Sidebar
+
     val logger: Logger
     val classLoader: ClassLoader
 }

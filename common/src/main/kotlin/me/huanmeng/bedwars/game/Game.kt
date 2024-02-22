@@ -10,13 +10,14 @@ import me.huanmeng.bedwars.platform.User
  * @author huanmeng_qwq
  */
 abstract class Game(internal val gameConfig: GameConfig) {
-    private val players: MutableSet<User> = linkedSetOf()
+    protected val players: MutableSet<User> = linkedSetOf()
     abstract val world: GameWorld
     abstract val sidebar: Sidebar
+    protected var gameState: GameState = GameState.WAITING
 
     internal lateinit var gameId: GameId
 
-    internal abstract fun onInit()
+    protected abstract fun onInit()
 
     /**
      * @return 如果返回true则代表加入成功
@@ -36,5 +37,5 @@ abstract class Game(internal val gameConfig: GameConfig) {
         }
     }
 
-    abstract fun onTick(tick: Long)
+    abstract fun onTick(tick: Int)
 }

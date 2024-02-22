@@ -8,7 +8,7 @@ import me.huanmeng.bedwars.game.Game
  * @author huanmeng_qwq
  */
 class GameTickRunnable(private val game: Game) : Runnable {
-    var tick: Long = 0
+    var tick: Int = 0
     override fun run() {
         try {
             game.onTick(tick)
