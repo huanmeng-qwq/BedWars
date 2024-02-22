@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin
  * @author huanmeng_qwq
  */
 class BedwarsPlugin : JavaPlugin() {
+    @get:JvmName("scoreboardLibrary")
     val scoreboardLibrary: ScoreboardLibrary by lazy {
         ScoreboardLibrary.loadScoreboardLibrary(this)
     }
@@ -24,6 +25,8 @@ class BedwarsPlugin : JavaPlugin() {
 
     companion object {
         private var instance: BedwarsPlugin? = null
+
+        @JvmStatic
         fun getInstance(): BedwarsPlugin {
             return instance!!
         }

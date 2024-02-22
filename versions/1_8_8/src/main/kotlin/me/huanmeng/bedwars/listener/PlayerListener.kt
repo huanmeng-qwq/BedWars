@@ -13,10 +13,10 @@ import org.bukkit.event.player.PlayerJoinEvent
 class PlayerListener(private val game: Game) : Listener {
     @EventHandler
     fun onPlayerJoin(e: PlayerJoinEvent) {
-        if (game.userJoin(e.player)) {
-            e.joinMessage = null
-        } else {
-            e.player.sendMessage("§c游戏加入失败")
-        }
+//        if (game.userJoin(e.player)) {
+//            e.joinMessage = null
+//        } else {
+//            e.player.sendMessage("§c游戏加入失败")
+//        }
     }
 }

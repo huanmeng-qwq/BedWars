@@ -1,6 +1,8 @@
 package me.huanmeng.bedwars.game
 
+import me.huanmeng.bedwars.util.Identifier
 import me.huanmeng.bedwars.util.Pos
+import me.huanmeng.bedwars.util.identifier
 
 /**
  * 2023/9/1<br>
@@ -8,7 +10,7 @@ import me.huanmeng.bedwars.util.Pos
  * @author huanmeng_qwq
  */
 data class GameConfig(
-    var mapName: String = "Unknown",
+    var mapId: Identifier = identifier("unknown"),
     var lobbyPos: Pos? = null,
     val maxPlayers: Int,
 ) {

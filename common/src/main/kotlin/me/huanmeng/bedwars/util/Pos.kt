@@ -1,7 +1,7 @@
 package me.huanmeng.bedwars.util
 
-import org.bukkit.Location
-import org.bukkit.World
+import me.huanmeng.bedwars.platform.GameWorld
+import me.huanmeng.bedwars.platform.WorldPos
 
 /**
  * 2023/9/1<br>
@@ -11,15 +11,11 @@ import org.bukkit.World
 data class Pos(
     val x: Double, val y: Double, val z: Double
 ) {
-    fun toBukkit(world: World): Location {
-        return Location(world, x, y, z)
+    fun world(world: GameWorld): WorldPos {
+        return WorldPos(this, world)
     }
 
     companion object {
-        fun fromBukkit(location: Location): Pos {
-            return Pos(location.x, location.y, location.z)
-        }
-
         fun of(x: Double, y: Double, z: Double): Pos {
             return Pos(x, y, z)
         }
