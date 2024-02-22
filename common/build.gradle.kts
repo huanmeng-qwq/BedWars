@@ -11,7 +11,9 @@ dependencies {
     api(libs.adventure.gson)
 
     api(libs.event.api)
-    api(libs.event.method)
+    api(libs.event.method.asm)
+
+    compileOnlyApi(libs.slf4j.api)
 }
 
 tasks.processResources {

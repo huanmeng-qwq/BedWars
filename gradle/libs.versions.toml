@@ -4,6 +4,7 @@ adventure-platform = "4.3.2"
 event = "3.0.0"
 packetevents = "2.2.1"
 scoreboard = "2.0.2"
+slf4j = "2.0.11"
 
 server8 = "1.8.8-R0.1-SNAPSHOT"
 
@@ -15,13 +16,15 @@ adventure-bungee = { group = "net.kyori", name = "adventure-platform-bungeecord"
 adventure-bukkit = { group = "net.kyori", name = "adventure-platform-bukkit", version.ref = "adventure-platform" }
 
 event-api = { group = "net.kyori", name = "event-api", version.ref = "event" }
-event-method = { group = "net.kyori", name = "event-method", version.ref = "event" }
+event-method-asm = { group = "net.kyori", name = "event-method-asm", version.ref = "event" }
 
 packetevents-spigot = { group = "com.github.retrooper.packetevents", name = "spigot", version.ref = "packetevents" }
 packetevents-bungeecord = { group = "com.github.retrooper.packetevents", name = "bungeecord", version.ref = "packetevents" }
 
 scoreboard-api = { group = "com.github.megavexnetwork.scoreboard-library", name = "scoreboard-library-api", version.ref = "scoreboard" }
 scoreboard-packetevent = { group = "com.github.megavexnetwork.scoreboard-library", name = "scoreboard-library-packetevents", version.ref = "scoreboard" }
+
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
 
 # spigot
 server8 = { group = "org.spigotmc", name = "spigot-api", version.ref = "server8" }

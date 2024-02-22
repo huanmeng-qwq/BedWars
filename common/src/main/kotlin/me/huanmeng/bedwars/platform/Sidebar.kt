@@ -14,4 +14,5 @@ interface Sidebar {
     fun title(title: Component)
 
     fun addUser(user: User)
+    fun removeUser(user: User)
 }

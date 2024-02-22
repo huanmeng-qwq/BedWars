@@ -8,33 +8,39 @@ import java.util.*
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-class GameManager {
-    private val games: MutableList<Game> = mutableListOf()
+abstract class GameManager<GAME : Game>(val gameFactory: GameFactory<GAME>) {
+    private val games: MutableMap<GameId, GAME> = hashMapOf()
     private val gameCfg: MutableMap<Identifier, GameConfig> = mutableMapOf()
 
-    fun createGame(gameConfig: GameConfig? = null, identifier: Identifier? = null): Game {
-        require(gameConfig != null || identifier != null) {
+    fun createGame(gameConfig: GameConfig? = null, configId: Identifier? = null): GAME {
+        require(gameConfig != null || configId != null) {
             "gameConfig or identifier must be not null"
         }
-        val config = gameConfig ?: getGameConfig(identifier!!)
+        val config = gameConfig ?: getGameConfig(configId!!)
         require(config != null) {
-            return@require "gameConfig is not registered: $identifier"
+            return@require "gameConfig is not registered: $configId"
         }
-        val game = Game(config)
+        val game = gameFactory.create(config)
         addGame(game)
         return game
     }
 
-    fun getGameConfig(identifier: Identifier): GameConfig? {
+    private fun getGameConfig(identifier: Identifier): GameConfig? {
         return gameCfg[identifier]
     }
 
-    private fun addGame(game: Game) {
-        games.add(game)
+    private fun addGame(game: GAME) {
+        val gameId = GameId(games.size, game.gameConfig.mapId)
+        game.gameId = gameId
+        games[gameId] = game
         game.onInit()
     }
 
-    fun getGames(): List<Game> {
-        return Collections.unmodifiableList(games)
+    fun getGames(): Collection<GAME> {
+        return Collections.unmodifiableCollection(games.values)
     }
+}
+
+interface GameFactory<T : Game> {
+    fun create(gameConfig: GameConfig): T
 }
