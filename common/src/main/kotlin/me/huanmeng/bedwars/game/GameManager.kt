@@ -10,7 +10,7 @@ import java.util.*
  */
 abstract class GameManager<GAME : Game>(val gameFactory: GameFactory<GAME>) {
     private val games: MutableMap<GameId, GAME> = hashMapOf()
-    private val gameCfg: MutableMap<Identifier, GameConfig> = mutableMapOf()
+    private val gameCfg: MutableMap<Identifier, GameConfig> = hashMapOf()
 
     fun createGame(gameConfig: GameConfig? = null, configId: Identifier? = null): GAME {
         require(gameConfig != null || configId != null) {
