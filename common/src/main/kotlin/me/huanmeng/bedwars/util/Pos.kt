@@ -1,7 +1,6 @@
 package me.huanmeng.bedwars.util
 
 import me.huanmeng.bedwars.platform.GameWorld
-import me.huanmeng.bedwars.platform.WorldPos
 
 /**
  * 2023/9/1<br>

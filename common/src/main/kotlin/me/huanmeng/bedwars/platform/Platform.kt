@@ -7,9 +7,11 @@ import org.slf4j.Logger
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-interface Platform {
+interface Platform<USER> {
     fun createSideBar(): Sidebar
 
     val logger: Logger
     val classLoader: ClassLoader
+
+    fun getUser(user: USER): User
 }

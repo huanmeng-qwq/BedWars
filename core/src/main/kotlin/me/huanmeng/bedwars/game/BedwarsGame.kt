@@ -10,7 +10,7 @@ import me.huanmeng.bedwars.platform.User
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-open class BedwarsGame(gameConfig: GameConfig, val platform: Platform) : Game(gameConfig) {
+open class BedwarsGame(gameConfig: GameConfig, val platform: Platform<*>) : Game<BedwarsTeam>(gameConfig) {
     override val world: GameWorld = TODO()
     override var sidebar: Sidebar
 
@@ -20,8 +20,12 @@ open class BedwarsGame(gameConfig: GameConfig, val platform: Platform) : Game(ga
     var startTick = 0
     var currentStateTick = 0
 
-    override fun onInit() {
+    override fun initialize() {
+        require(!initialize) {
+            "Game has been initialized"
+        }
         sidebar = platform.createSideBar()
+        initialize = true
     }
 
     override fun userJoin(user: User): Boolean {
@@ -36,7 +40,7 @@ open class BedwarsGame(gameConfig: GameConfig, val platform: Platform) : Game(ga
         ++age
         /*temp*/
         val wait = 20 * 10
-        if (players.size >= 2) {
+        if (_users.size >= 2) {
             ++currentStateTick
             if (currentStateTick >= wait) {
                 onGameStart(tick)

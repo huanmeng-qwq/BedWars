@@ -1,6 +1,7 @@
 package me.huanmeng.bedwars
 
-import net.megavex.scoreboardlibrary.api.ScoreboardLibrary
+import me.huanmeng.bedwars.listener.PlayerListener
+import me.huanmeng.bedwars.platform.BukkitPlatform
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -9,18 +10,15 @@ import org.bukkit.plugin.java.JavaPlugin
  * @author huanmeng_qwq
  */
 class BedwarsPlugin : JavaPlugin() {
-    @get:JvmName("scoreboardLibrary")
-    val scoreboardLibrary: ScoreboardLibrary by lazy {
-        ScoreboardLibrary.loadScoreboardLibrary(this)
-    }
-
+    val platform: BukkitPlatform = BukkitPlatform(this)
     override fun onEnable() {
         instance = this
+        server.pluginManager.registerEvents(PlayerListener(), this)
         logger.info("Bedwars插件已加载")
     }
 
     override fun onDisable() {
-        scoreboardLibrary.close()
+        platform.scoreboardLibrary.close()
     }
 
     companion object {

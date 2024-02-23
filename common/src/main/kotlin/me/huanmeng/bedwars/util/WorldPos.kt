@@ -1,6 +1,6 @@
-package me.huanmeng.bedwars.platform
+package me.huanmeng.bedwars.util
 
-import me.huanmeng.bedwars.util.Pos
+import me.huanmeng.bedwars.platform.GameWorld
 
 /**
  * 2024/2/22<br>

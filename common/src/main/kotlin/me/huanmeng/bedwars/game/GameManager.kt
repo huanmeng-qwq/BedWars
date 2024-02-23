@@ -8,7 +8,7 @@ import java.util.*
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-abstract class GameManager<GAME : Game>(val gameFactory: GameFactory<GAME>) {
+abstract class GameManager<GAME : Game<*>>(val gameFactory: GameFactory<GAME>) {
     private val games: MutableMap<GameId, GAME> = hashMapOf()
     private val gameCfg: MutableMap<Identifier, GameConfig> = hashMapOf()
 
@@ -33,7 +33,7 @@ abstract class GameManager<GAME : Game>(val gameFactory: GameFactory<GAME>) {
         val gameId = GameId(games.size, game.gameConfig.mapId)
         game.gameId = gameId
         games[gameId] = game
-        game.onInit()
+        game.initialize()
     }
 
     fun getGames(): Collection<GAME> {
@@ -41,6 +41,6 @@ abstract class GameManager<GAME : Game>(val gameFactory: GameFactory<GAME>) {
     }
 }
 
-interface GameFactory<T : Game> {
+interface GameFactory<T : Game<*>> {
     fun create(gameConfig: GameConfig): T
 }
