@@ -7,7 +7,7 @@ import me.huanmeng.bedwars.game.Game
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-class GameTickRunnable(private val game: Game) : Runnable {
+class GameTickRunnable(private val game: Game<*>) : Runnable {
     var tick: Int = 0
     override fun run() {
         try {

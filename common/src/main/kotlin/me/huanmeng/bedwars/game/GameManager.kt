@@ -1,6 +1,7 @@
 package me.huanmeng.bedwars.game
 
 import me.huanmeng.bedwars.util.Identifier
+import me.huanmeng.bedwars.util.identifier
 import java.util.*
 
 /**
@@ -20,7 +21,7 @@ abstract class GameManager<GAME : Game<*>>(val gameFactory: GameFactory<GAME>) {
         require(config != null) {
             return@require "gameConfig is not registered: $configId"
         }
-        val game = gameFactory.create(config)
+        val game = gameFactory.create(config, identifier("unknown"))//todo
         addGame(game)
         return game
     }
@@ -30,7 +31,7 @@ abstract class GameManager<GAME : Game<*>>(val gameFactory: GameFactory<GAME>) {
     }
 
     private fun addGame(game: GAME) {
-        val gameId = GameId(games.size, game.gameConfig.mapId)
+        val gameId = GameId(games.size, game.mapId)
         game.gameId = gameId
         games[gameId] = game
         game.initialize()
@@ -42,5 +43,5 @@ abstract class GameManager<GAME : Game<*>>(val gameFactory: GameFactory<GAME>) {
 }
 
 interface GameFactory<T : Game<*>> {
-    fun create(gameConfig: GameConfig): T
+    fun create(gameConfig: GameConfig, mapId: Identifier): T
 }

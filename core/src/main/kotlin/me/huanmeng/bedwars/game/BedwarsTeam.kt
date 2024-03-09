@@ -6,8 +6,12 @@ package me.huanmeng.bedwars.game
  * @author huanmeng_qwq
  */
 class BedwarsTeam(teamType: TeamType, game: BedwarsGame) : Team<BedwarsGame>(teamType, game) {
-    override fun onGameStart() {
-        TODO("Not yet implemented")
+    override fun initialize() {
+        require(!initialize) {
+            "Team has been initialized"
+        }
+        initialize = true
+        game.playerTeams
     }
 
     override fun onTick(tick: Int) {

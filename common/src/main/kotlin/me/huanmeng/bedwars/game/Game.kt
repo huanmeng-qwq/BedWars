@@ -1,8 +1,10 @@
 package me.huanmeng.bedwars.game
 
 import me.huanmeng.bedwars.platform.GameWorld
+import me.huanmeng.bedwars.platform.Platform
 import me.huanmeng.bedwars.platform.Sidebar
 import me.huanmeng.bedwars.platform.User
+import me.huanmeng.bedwars.util.Identifier
 import java.util.*
 
 /**
@@ -10,7 +12,11 @@ import java.util.*
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-abstract class Game<TEAM : Team<*>>(internal val gameConfig: GameConfig) {
+abstract class Game<TEAM : Team<*>>(
+    protected val gameConfig: GameConfig,
+    protected val platform: Platform<*>,
+    var mapId: Identifier
+) {
     abstract val world: GameWorld
     abstract val sidebar: Sidebar
 
@@ -28,9 +34,13 @@ abstract class Game<TEAM : Team<*>>(internal val gameConfig: GameConfig) {
         get() {
             return Collections.unmodifiableSet(_users)
         }
-    val teams: Map<TeamType, TEAM>
+    val teamMap: Map<TeamType, TEAM>
         get() {
             return Collections.unmodifiableMap(_teams)
+        }
+    val teams: Collection<TEAM>
+        get() {
+            return Collections.unmodifiableCollection(_teams.values)
         }
     val playerTeams: Map<User, TeamType>
         get() {

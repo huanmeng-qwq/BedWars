@@ -6,7 +6,8 @@ package me.huanmeng.bedwars.game
  * @author huanmeng_qwq
  */
 abstract class Team<GAME>(val teamType: TeamType, val game: GAME) {
-    protected abstract fun onGameStart()
+    var initialize: Boolean = false
+    abstract fun initialize()
 
     abstract fun onTick(tick: Int)
 }

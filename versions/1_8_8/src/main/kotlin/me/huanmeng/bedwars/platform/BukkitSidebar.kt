@@ -10,22 +10,22 @@ import org.bukkit.entity.Player
  */
 class BukkitSidebar(
     override val platform: Platform<Player>,
-    val libSideBar: net.megavex.scoreboardlibrary.api.sidebar.Sidebar
+    val upstream: SidebarUpstream
 ) : Sidebar {
 
     override fun line(line: Int, text: Component?) {
-        libSideBar.line(line, text)
+        upstream.line(line, text)
     }
 
     override fun title(title: Component) {
-        libSideBar.title(title)
+        upstream.title(title)
     }
 
     override fun addUser(user: User) {
-        libSideBar.addPlayer(user.player)
+        upstream.addPlayer(user.player)
     }
 
     override fun removeUser(user: User) {
-        libSideBar.addPlayer(user.player)
+        upstream.addPlayer(user.player)
     }
 }

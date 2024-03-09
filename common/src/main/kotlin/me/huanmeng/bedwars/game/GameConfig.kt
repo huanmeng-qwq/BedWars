@@ -1,8 +1,6 @@
 package me.huanmeng.bedwars.game
 
-import me.huanmeng.bedwars.util.Identifier
 import me.huanmeng.bedwars.util.Pos
-import me.huanmeng.bedwars.util.identifier
 import java.util.*
 
 /**
@@ -11,7 +9,6 @@ import java.util.*
  * @author huanmeng_qwq
  */
 data class GameConfig(
-    var mapId: Identifier = identifier("unknown"),
     var minPlayers: Int = 6,
     var maxPlayers: Int = 16,
 
