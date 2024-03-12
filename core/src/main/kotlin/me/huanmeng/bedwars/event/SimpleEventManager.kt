@@ -14,7 +14,7 @@ import net.kyori.event.method.asm.ASMEventExecutorFactory
  * @author huanmeng_qwq
  */
 class SimpleEventManager(
-    override val platform: Platform
+    override val platform: Platform<*>
 ) : EventManager {
     private val eventBus: EventBus<Event> = SimpleEventBus(Event::class.java)
     private val methodSubscription: MethodSubscriptionAdapter<Listener> = SimpleMethodSubscriptionAdapter(

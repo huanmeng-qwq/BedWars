@@ -6,6 +6,7 @@ package me.huanmeng.bedwars.game
  * @author huanmeng_qwq
  */
 abstract class Team<GAME>(val teamType: TeamType, val game: GAME) {
+    abstract val teamConfig: TeamConfig
     var initialize: Boolean = false
     abstract fun initialize()
 

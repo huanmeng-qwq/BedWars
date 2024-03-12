@@ -6,3 +6,4 @@ package me.huanmeng.bedwars.platform
  * @author huanmeng_qwq
  */
 typealias SidebarUpstream = net.megavex.scoreboardlibrary.api.sidebar.Sidebar
+typealias NPCUpstream = com.github.retrooper.packetevents.protocol.npc.NPC

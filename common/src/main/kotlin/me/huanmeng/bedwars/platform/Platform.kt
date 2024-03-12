@@ -1,5 +1,6 @@
 package me.huanmeng.bedwars.platform
 
+import me.huanmeng.bedwars.util.WorldPos
 import org.slf4j.Logger
 
 /**
@@ -9,6 +10,8 @@ import org.slf4j.Logger
  */
 interface Platform<USER> {
     fun createSideBar(): Sidebar
+
+    fun createNPC(pos: WorldPos): NPC
 
     val logger: Logger
     val classLoader: ClassLoader

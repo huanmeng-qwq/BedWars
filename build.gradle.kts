@@ -12,8 +12,9 @@ allprojects {
         sequenceOf(
             "https://repo.codemc.io/repository/maven-public/",
             "https://hub.spigotmc.org/nexus/content/repositories/snapshots/",
-            "https://oss.sonatype.org/content/repositories/snapshots",
-            "https://oss.sonatype.org/content/repositories/central"
+            "https://oss.sonatype.org/content/repositories/snapshots/",
+            "https://oss.sonatype.org/content/repositories/central/",
+            "https://repo.papermc.io/repository/maven-public/"
         ).forEach {
             maven(it)
         }

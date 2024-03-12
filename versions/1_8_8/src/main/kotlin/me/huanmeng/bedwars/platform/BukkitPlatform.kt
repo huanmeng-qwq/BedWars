@@ -23,6 +23,10 @@ class BukkitPlatform(plugin: Plugin) : Platform<Player> {
         return BukkitSidebar(this, scoreboardLibrary.createSidebar())
     }
 
+    override fun createNPC(pos: WorldPos): NPC {
+        return BukkitNPC(this, pos)
+    }
+
     override val logger: Logger = LoggerFactory.getLogger("BedWars")
     override val classLoader: ClassLoader = plugin.javaClass.classLoader
 
@@ -39,7 +43,7 @@ class BukkitPlatform(plugin: Plugin) : Platform<Player> {
 
 val WorldPos.bukkit: Location
     get() {
-        return Location((this.world as BukkitWorld).world, this.pos.x, this.pos.y, this.pos.z)
+        return Location((this.world as BukkitWorld).world, this.x, this.y, this.z)
     }
 
 val User.player: Player

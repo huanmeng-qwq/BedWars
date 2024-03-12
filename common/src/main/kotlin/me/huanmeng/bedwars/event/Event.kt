@@ -9,6 +9,6 @@ import me.huanmeng.bedwars.platform.Platform
  * @author huanmeng_qwq
  */
 interface Event {
-    val platform: Platform
+    val platform: Platform<*>
     val gameId: GameId
 }

@@ -13,8 +13,8 @@ import java.util.*
  * @author huanmeng_qwq
  */
 abstract class Game<TEAM : Team<*>>(
-    protected val gameConfig: GameConfig,
-    protected val platform: Platform<*>,
+    val gameConfig: GameConfig,
+    val platform: Platform<*>,
     var mapId: Identifier
 ) {
     abstract val world: GameWorld
@@ -23,7 +23,7 @@ abstract class Game<TEAM : Team<*>>(
     protected val _users: MutableSet<User> = linkedSetOf()
     protected var gameState: GameState = GameState.WAITING
     protected val _teams: MutableMap<TeamType, TEAM> = mutableMapOf()
-    protected val _playerTeams: MutableMap<User, TeamType> = hashMapOf()
+    protected val _userTeams: MutableMap<User, TeamType> = hashMapOf()
 
     protected var initialize: Boolean = false
 
@@ -42,9 +42,9 @@ abstract class Game<TEAM : Team<*>>(
         get() {
             return Collections.unmodifiableCollection(_teams.values)
         }
-    val playerTeams: Map<User, TeamType>
+    val userTeams: Map<User, TeamType>
         get() {
-            return Collections.unmodifiableMap(_playerTeams)
+            return Collections.unmodifiableMap(_userTeams)
         }
     /*Getter end*/
 
@@ -66,6 +66,22 @@ abstract class Game<TEAM : Team<*>>(
         if (_users.remove(user)) {
             sidebar.removeUser(user)
         }
+    }
+
+    fun getTeam(teamType: TeamType): TEAM? {
+        return _teams[teamType]
+    }
+
+    fun getTeamUsers(teamType: TeamType): List<User> {
+        return userTeams.filter { it.value == teamType }.map { it.key }
+    }
+
+    fun setTeam(user: User, teamType: TeamType) {
+        _userTeams[user] = teamType
+    }
+
+    fun setTeam(user: User, team: TEAM) {
+        _userTeams[user] = team.teamType
     }
 
     abstract fun onTick(tick: Int)

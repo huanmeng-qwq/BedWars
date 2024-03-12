@@ -6,12 +6,19 @@ package me.huanmeng.bedwars.game
  * @author huanmeng_qwq
  */
 class BedwarsTeam(teamType: TeamType, game: BedwarsGame) : Team<BedwarsGame>(teamType, game) {
+    override val teamConfig: TeamConfig
+        get() = game.gameConfig.teams[teamType]!!
+
     override fun initialize() {
         require(!initialize) {
             "Team has been initialized"
         }
         initialize = true
-        game.playerTeams
+        game.getTeamUsers(teamType).forEach { user ->
+            teamConfig.spawnPos?.also { spawnPos ->
+                user.teleport(spawnPos.world(game.world))
+            }
+        }
     }
 
     override fun onTick(tick: Int) {
