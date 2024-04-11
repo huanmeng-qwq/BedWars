@@ -1,7 +1,7 @@
 [versions]
 adventure = "4.16.0"
 adventure-platform = "4.3.2"
-event = "1.0.2"
+event = "1.0.3"
 packetevents = "2.2.1"
 scoreboard = "2.0.2"
 slf4j = "2.0.11"

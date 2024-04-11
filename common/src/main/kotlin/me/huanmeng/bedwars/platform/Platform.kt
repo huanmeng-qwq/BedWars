@@ -1,5 +1,6 @@
 package me.huanmeng.bedwars.platform
 
+import me.huanmeng.bedwars.event.EventManager
 import me.huanmeng.bedwars.util.WorldPos
 import org.slf4j.Logger
 
@@ -15,6 +16,7 @@ interface Platform<USER> {
 
     val logger: Logger
     val classLoader: ClassLoader
+    val eventManager: EventManager
 
     fun getUser(user: USER): User
 }

@@ -1,5 +1,7 @@
 package me.huanmeng.bedwars.platform
 
+import me.huanmeng.bedwars.event.EventManager
+import me.huanmeng.bedwars.event.SimpleEventManager
 import me.huanmeng.bedwars.util.WorldPos
 import net.megavex.scoreboardlibrary.api.ScoreboardLibrary
 import org.bukkit.Location
@@ -29,6 +31,7 @@ class BukkitPlatform(plugin: Plugin) : Platform<Player> {
 
     override val logger: Logger = LoggerFactory.getLogger("BedWars")
     override val classLoader: ClassLoader = plugin.javaClass.classLoader
+    override val eventManager: EventManager = SimpleEventManager(this)
 
     override fun getUser(user: Player): User {
         return userMap.getOrPut(user) {
