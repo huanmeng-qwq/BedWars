@@ -2,11 +2,7 @@ package me.huanmeng.bedwars.event
 
 import me.huanmeng.bedwars.platform.Platform
 import me.huanmeng.bedwars.util.Identifier
-import net.kyori.event.EventBus
-import net.kyori.event.SimpleEventBus
-import net.kyori.event.method.MethodSubscriptionAdapter
-import net.kyori.event.method.SimpleMethodSubscriptionAdapter
-import net.kyori.event.method.asm.ASMEventExecutorFactory
+import me.huanmeng.event.AbstractEventManager
 
 /**
  * 2024/2/22<br>
@@ -15,24 +11,16 @@ import net.kyori.event.method.asm.ASMEventExecutorFactory
  */
 class SimpleEventManager(
     override val platform: Platform<*>
-) : EventManager {
-    private val eventBus: EventBus<Event> = SimpleEventBus(Event::class.java)
-    private val methodSubscription: MethodSubscriptionAdapter<Listener> = SimpleMethodSubscriptionAdapter(
-        eventBus,
-        ASMEventExecutorFactory(platform.classLoader),
-        MethodScannerImpl
-    )
+) : EventManager, AbstractEventManager<Event, Listener, BedwarsEvent>(
+    Event::class.java,
+    Listener::class.java,
+    BedwarsEvent::class.java,
+    logger = platform.logger
+) {
     private val listenerMap: MutableMap<Identifier, Listener> = hashMapOf()
 
-    override fun <T : Event> callEvent(event: T): T {
-        eventBus.post(event).apply {
-            if (!wasSuccessful()) {
-                platform.logger.error("An error occurred while processing some listening events")
-                exceptions().forEach { (eventSubscription, exception) ->
-                    platform.logger.error("{}", eventSubscription.genericType(), exception)
-                }
-            }
-        }
+    override fun <T : Event> call(event: T): T {
+        callEvent(event)
         return event
     }
 
@@ -40,7 +28,7 @@ class SimpleEventManager(
         if (listenerMap.containsKey(identifier)) {
             throw IllegalStateException("Listener already registered: $identifier")
         }
-        methodSubscription.register(listener)
+        register(listener)
         listenerMap[identifier] = listener
         return identifier
     }
@@ -49,7 +37,15 @@ class SimpleEventManager(
         if (!listenerMap.containsKey(identifier)) {
             throw IllegalStateException("Listener not registered: $identifier")
         }
-        methodSubscription.unregister(listenerMap[identifier]!!)
+        unregister(listenerMap[identifier]!!)
         listenerMap.remove(identifier)
+    }
+
+    override fun onRegister(listener: Listener) {
+        logger.debug("Registered listener: {}", listener)
+    }
+
+    override fun onUnregister(listener: Listener) {
+        logger.debug("Unregistered listener: {}", listener)
     }
 }

@@ -10,8 +10,7 @@ dependencies {
     api(libs.adventure.nbt)
     api(libs.adventure.gson)
 
-    api(libs.event.api)
-    api(libs.event.method.asm)
+    api(libs.event)
 
     compileOnlyApi(libs.slf4j.api)
 }

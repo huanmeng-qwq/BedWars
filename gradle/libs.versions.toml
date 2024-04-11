@@ -1,7 +1,7 @@
 [versions]
 adventure = "4.16.0"
 adventure-platform = "4.3.2"
-event = "3.0.0"
+event = "1.0.2"
 packetevents = "2.2.1"
 scoreboard = "2.0.2"
 slf4j = "2.0.11"
@@ -15,8 +15,7 @@ adventure-gson = { group = "net.kyori", name = "adventure-text-serializer-gson",
 adventure-bungee = { group = "net.kyori", name = "adventure-platform-bungeecord", version.ref = "adventure-platform" }
 adventure-bukkit = { group = "net.kyori", name = "adventure-platform-bukkit", version.ref = "adventure-platform" }
 
-event-api = { group = "net.kyori", name = "event-api", version.ref = "event" }
-event-method-asm = { group = "net.kyori", name = "event-method-asm", version.ref = "event" }
+event = { group = "com.huanmeng-qwq", name = "event-core-asm", version.ref = "event" }
 
 packetevents-spigot = { group = "com.github.retrooper.packetevents", name = "spigot", version.ref = "packetevents" }
 packetevents-bungeecord = { group = "com.github.retrooper.packetevents", name = "bungeecord", version.ref = "packetevents" }

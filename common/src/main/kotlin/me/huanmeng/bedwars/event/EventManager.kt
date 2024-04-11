@@ -10,7 +10,7 @@ import me.huanmeng.bedwars.util.Identifier
  */
 interface EventManager {
     val platform: Platform<*>
-    fun <T : Event> callEvent(event: T): T
+    fun <T : Event> call(event: T): T
 
     fun registerListener(identifier: Identifier, listener: Listener): Identifier
 
