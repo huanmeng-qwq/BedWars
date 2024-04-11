@@ -8,8 +8,8 @@ import me.huanmeng.bedwars.util.WorldPos
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-interface GameWorld {
-    val platform: Platform<*>
+interface GameWorld : PlatformScope {
+    override val platform: Platform<*>
 
     val name: String
 

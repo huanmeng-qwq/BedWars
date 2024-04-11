@@ -1,9 +1,7 @@
 package me.huanmeng.bedwars.game
 
-import me.huanmeng.bedwars.platform.GameWorld
-import me.huanmeng.bedwars.platform.Platform
-import me.huanmeng.bedwars.platform.Sidebar
-import me.huanmeng.bedwars.platform.User
+import me.huanmeng.bedwars.event.BedwarsGameStartEvent
+import me.huanmeng.bedwars.platform.*
 import me.huanmeng.bedwars.util.Identifier
 
 /**
@@ -63,12 +61,16 @@ open class BedwarsGame(
 
     open fun onGameStart(tick: Int) {
         if (gameState != GameState.WAITING) return
+        if (callEvent(BedwarsGameStartEvent.Pre(platform, gameId)).cancelled()) {
+            return
+        }
         gameState = GameState.STARTED
         age = 0
         startTick = tick
         teams.forEach {
             it.initialize()
         }
+        callEvent(BedwarsGameStartEvent.Post(platform, gameId))
     }
 
 }

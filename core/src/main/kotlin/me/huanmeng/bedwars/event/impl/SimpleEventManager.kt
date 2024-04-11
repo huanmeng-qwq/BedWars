@@ -1,8 +1,13 @@
-package me.huanmeng.bedwars.event
+package me.huanmeng.bedwars.event.impl
 
+import me.huanmeng.bedwars.event.BedwarsEvent
+import me.huanmeng.bedwars.event.Event
+import me.huanmeng.bedwars.event.EventManager
+import me.huanmeng.bedwars.event.Listener
 import me.huanmeng.bedwars.platform.Platform
 import me.huanmeng.bedwars.util.Identifier
 import me.huanmeng.event.AbstractEventManager
+import net.kyori.event.EventBus
 
 /**
  * 2024/2/22<br>
@@ -15,8 +20,9 @@ class SimpleEventManager(
     Event::class.java,
     Listener::class.java,
     BedwarsEvent::class.java,
-    logger = platform.logger
+    platform.logger
 ) {
+    override val eventBus: EventBus<Event> = EventBusImpl(eventClass)
     private val listenerMap: MutableMap<Identifier, Listener> = hashMapOf()
 
     override fun <T : Event> call(event: T): T {

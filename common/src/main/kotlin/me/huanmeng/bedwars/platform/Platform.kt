@@ -1,5 +1,6 @@
 package me.huanmeng.bedwars.platform
 
+import me.huanmeng.bedwars.event.Event
 import me.huanmeng.bedwars.event.EventManager
 import me.huanmeng.bedwars.util.WorldPos
 import org.slf4j.Logger
@@ -19,4 +20,13 @@ interface Platform<USER> {
     val eventManager: EventManager
 
     fun getUser(user: USER): User
+}
+
+
+interface PlatformScope {
+    val platform: Platform<*>
+}
+
+fun <T : Event> PlatformScope.callEvent(event: T): T {
+    return platform.eventManager.call(event)
 }

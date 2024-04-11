@@ -1,6 +1,5 @@
 package me.huanmeng.bedwars.platform
 
-import me.huanmeng.bedwars.util.WorldPos
 import net.kyori.adventure.text.Component
 
 /**
@@ -8,8 +7,8 @@ import net.kyori.adventure.text.Component
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-interface NPC {
-    val platform: Platform<*>
+interface NPC : PlatformScope {
+    override val platform: Platform<*>
 
     fun line(line: Int, text: Component?)
 

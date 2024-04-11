@@ -1,7 +1,7 @@
 package me.huanmeng.bedwars.platform
 
 import me.huanmeng.bedwars.event.EventManager
-import me.huanmeng.bedwars.event.SimpleEventManager
+import me.huanmeng.bedwars.event.impl.SimpleEventManager
 import me.huanmeng.bedwars.util.WorldPos
 import net.megavex.scoreboardlibrary.api.ScoreboardLibrary
 import org.bukkit.Location

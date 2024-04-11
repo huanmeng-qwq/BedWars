@@ -1,9 +1,6 @@
 package me.huanmeng.bedwars.game
 
-import me.huanmeng.bedwars.platform.GameWorld
-import me.huanmeng.bedwars.platform.Platform
-import me.huanmeng.bedwars.platform.Sidebar
-import me.huanmeng.bedwars.platform.User
+import me.huanmeng.bedwars.platform.*
 import me.huanmeng.bedwars.util.Identifier
 import java.util.*
 
@@ -14,9 +11,9 @@ import java.util.*
  */
 abstract class Game<TEAM : Team<*>>(
     val gameConfig: GameConfig,
-    val platform: Platform<*>,
+    override val platform: Platform<*>,
     var mapId: Identifier
-) {
+): PlatformScope {
     abstract val world: GameWorld
     abstract val sidebar: Sidebar
 
@@ -27,7 +24,7 @@ abstract class Game<TEAM : Team<*>>(
 
     protected var initialize: Boolean = false
 
-    internal lateinit var gameId: GameId
+    lateinit var gameId: GameId
 
     /*Getter*/
     val users: Set<User>

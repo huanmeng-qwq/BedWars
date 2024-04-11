@@ -8,8 +8,8 @@ import java.util.*
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-interface User {
-    val platform: Platform<*>
+interface User : PlatformScope {
+    override val platform: Platform<*>
     val name: String
     val uuid: UUID
     fun getDisplayName(view: User): String
