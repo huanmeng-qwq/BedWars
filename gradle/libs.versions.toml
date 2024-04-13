@@ -4,7 +4,7 @@ adventure-platform = "4.3.2"
 event = "1.0.4"
 packetevents = "2.2.1"
 scoreboard = "2.1.4"
-slf4j = "2.0.12"
+slf4j = "2.0.13"
 
 server8 = "1.8.8-R0.1-SNAPSHOT"
 
