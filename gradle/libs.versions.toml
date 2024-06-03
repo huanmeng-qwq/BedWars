@@ -1,6 +1,6 @@
 [versions]
 adventure = "4.17.0"
-adventure-platform = "4.3.2"
+adventure-platform = "4.3.3"
 event = "1.0.4"
 packetevents = "2.2.1"
 scoreboard = "2.1.4"
