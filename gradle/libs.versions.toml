@@ -1,5 +1,5 @@
 [versions]
-adventure = "4.18.0"
+adventure = "4.19.0"
 adventure-platform = "4.3.4"
 event = "1.0.4"
 packetevents = "2.2.1"
