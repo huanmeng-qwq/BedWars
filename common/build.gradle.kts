@@ -9,6 +9,8 @@ dependencies {
     api(libs.adventure.api)
     api(libs.adventure.nbt)
     api(libs.adventure.gson)
+    api(libs.adventure.logger)
+    api(libs.adventure.legacy)
 
     api(libs.event)
 

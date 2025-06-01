@@ -3,6 +3,7 @@ package me.huanmeng.bedwars.platform
 import me.huanmeng.bedwars.event.Event
 import me.huanmeng.bedwars.event.EventManager
 import me.huanmeng.bedwars.util.WorldPos
+import net.kyori.adventure.text.logger.slf4j.ComponentLogger
 import org.slf4j.Logger
 
 /**
@@ -15,7 +16,7 @@ interface Platform<USER> {
 
     fun createNPC(pos: WorldPos): NPC
 
-    val logger: Logger
+    val logger: ComponentLogger
     val classLoader: ClassLoader
     val eventManager: EventManager
 

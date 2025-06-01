@@ -10,8 +10,11 @@ allprojects {
     repositories {
         mavenCentral()
         sequenceOf(
+            "https://repo.codemc.io/repository/maven-releases/",
+            "https://repo.codemc.io/repository/maven-snapshots/",
             "https://repo.codemc.io/repository/maven-public/",
             "https://hub.spigotmc.org/nexus/content/repositories/snapshots/",
+            "https://maven.evokegames.gg/snapshots/",
             "https://oss.sonatype.org/content/repositories/snapshots/",
             "https://oss.sonatype.org/content/repositories/central/",
             "https://repo.papermc.io/repository/maven-public/"

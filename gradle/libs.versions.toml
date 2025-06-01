@@ -2,7 +2,8 @@
 adventure = "4.18.0"
 adventure-platform = "4.3.4"
 event = "1.0.4"
-packetevents = "v2.8.0"
+packetevents = "2.8.0"
+entitylib = "+53e4d91-SNAPSHOT"
 scoreboard = "2.1.4"
 slf4j = "2.0.16"
 
@@ -12,13 +13,16 @@ server8 = "1.8.8-R0.1-SNAPSHOT"
 adventure-api = { group = "net.kyori", name = "adventure-api", version.ref = "adventure" }
 adventure-nbt = { group = "net.kyori", name = "adventure-nbt", version.ref = "adventure" }
 adventure-gson = { group = "net.kyori", name = "adventure-text-serializer-gson", version.ref = "adventure" }
+adventure-legacy = { group = "net.kyori", name = "adventure-text-serializer-legacy", version.ref = "adventure" }
+adventure-logger = { group = "net.kyori", name = "adventure-text-logger-slf4j", version.ref = "adventure" }
 adventure-bungee = { group = "net.kyori", name = "adventure-platform-bungeecord", version.ref = "adventure-platform" }
 adventure-bukkit = { group = "net.kyori", name = "adventure-platform-bukkit", version.ref = "adventure-platform" }
 
 event = { group = "com.huanmeng-qwq", name = "event-core-asm", version.ref = "event" }
 
-packetevents-spigot = { group = "com.github.retrooper.packetevents", name = "spigot", version.ref = "packetevents" }
-packetevents-bungeecord = { group = "com.github.retrooper.packetevents", name = "bungeecord", version.ref = "packetevents" }
+packetevents-spigot = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents" }
+packetevents-bungeecord = { group = "com.github.retrooper", name = "packetevents-bungeecord", version.ref = "packetevents" }
+entitylib = { group = "me.tofaa.entitylib", name = "spigot", version.ref = "entitylib" }
 
 scoreboard-api = { group = "com.github.megavexnetwork.scoreboard-library", name = "scoreboard-library-api", version.ref = "scoreboard" }
 scoreboard-packetevent = { group = "com.github.megavexnetwork.scoreboard-library", name = "scoreboard-library-packetevents", version.ref = "scoreboard" }

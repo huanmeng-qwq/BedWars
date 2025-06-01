@@ -9,11 +9,18 @@ import net.kyori.event.Cancellable
  * Bedwars<br>
  * @author huanmeng_qwq
  */
-sealed class BedwarsGameStartEvent(override val platform: Platform<*>, override val gameId: GameId) : Event {
-    class Pre(platform: Platform<*>, gameId: GameId) : BedwarsGameStartEvent(platform, gameId),
+sealed class BedwarsGameStateEvents(override val platform: Platform<*>, override val gameId: GameId) : Event {
+    class Pre(platform: Platform<*>, gameId: GameId) : BedwarsGameStateEvents(platform, gameId),
         Cancellable by CancelEvent() {
     }
 
-    class Post(platform: Platform<*>, gameId: GameId) : BedwarsGameStartEvent(platform, gameId)
+    class Post(platform: Platform<*>, gameId: GameId) : BedwarsGameStateEvents(platform, gameId)
 }
 
+sealed class BedwarsGameEndEvent(override val platform: Platform<*>, override val gameId: GameId) : Event {
+    class Pre(platform: Platform<*>, gameId: GameId) : BedwarsGameEndEvent(platform, gameId),
+        Cancellable by CancelEvent() {
+    }
+
+    class Post(platform: Platform<*>, gameId: GameId) : BedwarsGameEndEvent(platform, gameId)
+}

@@ -3,6 +3,8 @@ package me.huanmeng.bedwars.platform
 import me.huanmeng.bedwars.event.EventManager
 import me.huanmeng.bedwars.event.impl.SimpleEventManager
 import me.huanmeng.bedwars.util.WorldPos
+import net.kyori.adventure.platform.bukkit.BukkitAudiences
+import net.kyori.adventure.text.logger.slf4j.ComponentLogger
 import net.megavex.scoreboardlibrary.api.ScoreboardLibrary
 import org.bukkit.Location
 import org.bukkit.entity.Player
@@ -19,6 +21,8 @@ class BukkitPlatform(plugin: Plugin) : Platform<Player> {
     @get:JvmName("scoreboardLibrary")
     val scoreboardLibrary: ScoreboardLibrary = ScoreboardLibrary.loadScoreboardLibrary(plugin)
 
+    val audiences = BukkitAudiences.create(plugin)
+
     private val userMap: MutableMap<Player, User> = hashMapOf()
 
     override fun createSideBar(): Sidebar {
@@ -29,13 +33,13 @@ class BukkitPlatform(plugin: Plugin) : Platform<Player> {
         return BukkitNPC(this, pos)
     }
 
-    override val logger: Logger = LoggerFactory.getLogger("BedWars")
+    override val logger: ComponentLogger = ComponentLogger.logger("BedWars")
     override val classLoader: ClassLoader = plugin.javaClass.classLoader
     override val eventManager: EventManager = SimpleEventManager(this)
 
     override fun getUser(user: Player): User {
         return userMap.getOrPut(user) {
-            BukkitUser(this, user, user.name)
+            BukkitUser(this, user, user.name, audiences.player(user))
         }
     }
 
